@@ -1,0 +1,153 @@
+:doctype: article
+:reproducible:
+:numbered:
+:lang: pl
+:encoding: utf-8
+:icons: font
+:resources_base_path: ./resources
+:toc-title: Spis treści
+:table-caption: Tabela
+:figure-caption: Rysunek
+:toc: macro
+:text-align: left
+:example-attribute: "Przykładowa wartość"
+
+= Przykładowy dokument (PL)
+
+Dane właściciela dokumentu
+
+// example logo from https://10endrathukulla.com/logo-png-example
+image::{resources_base_path}/sample-logo-design-png.png[Example logo,width=100,pdfwidth=25mm]
+
+// proporcje szerokości kolumn: druga 2x szersza od pierwszej
+[cols="1,2"]
+|===
+|Tytuł | Przykładowy dokument
+|Autor| Autor dokumentu
+|Wersja dokumentu| {docVersion}
+|Data ostatniej zmiany| {docsDate} (zmiana w repozytorium: {gitHash})
+|===
+
+.Historia zmian dokumentu
+// proporcje szerokości kolumn: czwarta 4x szersza od pierwszej
+[cols="1,2,2,4"]
+|===
+| Wersja | Data | Autor | Opis
+
+| 1.0 | ? | ? | Utworzenie dokumentu
+|===
+
+// spis treści od nowej strony
+<<<
+toc::[]
+
+// rozdział od nowej strony
+<<<
+[[przyklady-list]]
+== Przykłady list
+
+=== Lista numerowana
+
+. Pozycja 1
+.. Zagnieżdżona pozycja
+... Zagnieżdżona pozycja
+... Zagnieżdżona pozycja
+.. Zagnieżdżona pozycja
+.. Zagnieżdżona pozycja
+. Pozycja 2
+. Pozycja 3
+
+=== Lista wypunktowana
+
+* Pozycja 1
+** Zagnieżdżona pozycja
+*** Zagnieżdżona pozycja
+*** Zagnieżdżona pozycja
+** Zagnieżdżona pozycja
+** Zagnieżdżona pozycja
+* Pozycja 2
+* Pozycja 3
+
+// rozdział od nowej strony
+<<<
+== Przykłady formatowania kodu
+
+=== Java
+
+[source,java,subs="attributes+"]
+----
+public class HelloWorld { // <1>
+
+    public static void main(String[] args) {
+        System.out.println("Hello world"); // <2>
+    }
+}
+----
+<1> Przykład opisu klasy
+<2> Przykład opisu treści metody
+
+=== JSON
+
+[source,json,subs="attributes+"]
+----
+{
+  "type": "root",
+  "children": [
+    {
+      "a": "b",
+      "c": "d",
+      "e": null
+    }
+  ]
+}
+----
+
+=== Properties
+
+[source,properties,subs="attributes+"]
+----
+klucz.aaa=AAA
+klucz.bbb=BBB
+----
+
+=== Clojure
+
+[source,properties,subs="attributes+"]
+----
+(ns pl.example
+  "Example file"
+  (:require
+   [clojure.string :refer [join]])
+
+;; example function
+(defn example-function [attribute]
+  (let [param "value"]
+    (join attribute " " param)))
+----
+
+// rozdział od nowej strony
+<<<
+== Obrazki
+
+.Example screenshot
+image::{resources_base_path}/screenshot.png[Example screenshot]
+
+// rozdział od nowej strony
+<<<
+== Formatowanie
+
+> Cytat
+
+NOTE: Przykład uwagi
+
+TIP: Przykład wskazówki
+
+WARNING: Przykład ostrzeżenia
+
+IMPORTANT: Przykład ważniejszego ostrzeżenia
+
+Przykład zmiennej: {example-attribute}
+
+Fragment kod w treści: `public static void main(String[] args)`
+
+Odnośnik do innego rozdziału: <<przyklady-list>>.

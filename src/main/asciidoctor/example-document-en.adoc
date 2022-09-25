@@ -1,0 +1,151 @@
+:doctype: article
+:reproducible:
+:numbered:
+:lang: pl
+:encoding: utf-8
+:icons: font
+:resources_base_path: ./resources
+:toc-title: Table of contents
+:table-caption: Table
+:figure-caption: Image
+:toc: macro
+:text-align: left
+:example-attribute: "Example attribute value"
+
+= Example document (EN)
+
+Data of the owner of the document
+
+// example logo from https://10endrathukulla.com/logo-png-example
+image::{resources_base_path}/sample-logo-design-png.png[Example logo,width=100,pdfwidth=25mm]
+
+// proportions of column widths: the second 2x wider than the first
+[cols="1,2"]
+|===
+|Title | Example document
+|Author| Author of the document
+|Document version no.| {docVersion}
+|Date of last update| {docsDate} (change in the repository: {gitHash})
+|===
+
+.History of changes
+// proportions of column widths: the fourth 4x wider than the first
+[cols="1,2,2,4"]
+|===
+| Version | Date | Who | Description of changes
+
+| 1.0 | ? | ? | Creation of the document
+|===
+
+// table of contents from the new site
+<<<
+toc::[]
+
+// chapter from the new page
+<<<
+== Example of lists
+
+=== Numbered list
+
+. Item 1
+.. Nested position
+... Nested position
+... Nested position
+.. Nested position
+.. Nested position
+. Item 2
+. Item 3
+
+=== Unordered list
+
+* Item 1
+** Nested position
+*** Nested position
+*** Nested position
+** Nested position
+** Nested position
+* Item 2
+* Item 3
+
+// chapter from the new page
+<<<
+== Example of code formatting
+
+=== Java
+
+[source,java,subs="attributes+"]
+----
+public class HelloWorld { // <1>
+
+    public static void main(String[] args) {
+        System.out.println("Hello world"); // <2>
+    }
+}
+----
+<1> Class name description
+<2> Description of the content of the method
+
+=== JSON
+
+[source,json,subs="attributes+"]
+----
+{
+  "type": "root",
+  "children": [
+    {
+      "a": "b",
+      "c": "d",
+      "e": null
+    }
+  ]
+}
+----
+
+=== Properties
+
+[source,properties,subs="attributes+"]
+----
+klucz.aaa=AAA
+klucz.bbb=BBB
+----
+
+=== Clojure
+
+[source,properties,subs="attributes+"]
+----
+(ns pl.example
+  "Example file"
+  (:require
+   [clojure.string :refer [join]])
+
+;; example function
+(defn example-function [attribute]
+  (let [param "value"]
+    (join attribute " " param)))
+----
+
+// chapter from the new page
+<<<
+== Images
+
+.Example screenshot
+image::{resources_base_path}/screenshot.png[Example screenshot]
+
+// chapter from the new page
+<<<
+== Formatting examples
+
+> Quote
+
+NOTE: Note example
+
+TIP: Tip example
+
+WARNING: Warning example
+
+IMPORTANT: Important example
+
+Example attribute value: {example-attribute}
+
+Code fragment: `public static void main(String[] args)`
+

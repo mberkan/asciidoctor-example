@@ -1,0 +1,41 @@
+extends: default
+
+# black table frame
+table:
+  border-color: #000000
+
+# Header and footer
+page_margin: [0.67in, 0.67in, 0.67in, 0.67in]
+header:
+  height: $base_line_height_length * 2.5
+  padding: [ $base_line_height_length / 2, 1, 0, 1 ]
+  valign: top
+  border_color: #000000
+  border_width: 0.25
+  recto:
+    left:
+      content: '{doctitle}'
+    right:
+      content: 'Document version no.: {docVersion}'
+  verso:
+    left:
+      content: $header_recto_left_content
+    right:
+      content: $header_recto_right_content
+
+footer:
+  height: $base_line_height_length * 2.5
+  padding: [ $base_line_height_length / 2, 1, 0, 1 ]
+  valign: bottom
+  border_color: #000000
+  border_width: 0.25
+  recto:
+    left:
+      content: ''
+    right:
+      content: 'Page {page-number} of {page-count}'
+  verso:
+    left:
+      content: $footer_recto_left_content
+    right:
+      content: $footer_recto_right_content

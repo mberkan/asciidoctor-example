@@ -1,0 +1,92 @@
+
+plugins {
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.asciidoctor.jvm.pdf' version '3.3.2'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+def docVersion = '1.0'
+def srcDir = 'src/main/asciidoctor'
+
+asciidoctorj {
+    // version number from git commit
+    attributes docsDate : getDate()
+    attributes gitHash : getGitHash()
+    attributes docVersion : docVersion
+}
+
+asciidoctor {
+    sourceDir file(srcDir)
+    baseDir file(srcDir)
+    outputDir file("build/html5/")
+    attributes 'source-highlighter': 'coderay'
+
+    sources {
+        include '*-pl.adoc'
+    }
+
+    resources {
+        from(srcDir) {
+            include 'resources/**/*.gif'
+            include 'resources/**/*.jpg'
+            include 'resources/**/*.pdf'
+            include 'resources/**/*.png'
+            include 'resources/**/*.xlsx'
+            include 'resources/**/*.xml'
+        }
+    }
+
+    asciidoctorj {
+        // spis treści w lewej ramce
+        attributes toc : 'left'
+    }
+}
+
+asciidoctorPdf {
+    sourceDir file(srcDir)
+    baseDir file(srcDir)
+    outputDir file("build/pdf/")
+    theme 'example-pl'
+    attributes 'source-highlighter': 'coderay'
+
+    sources {
+        include '*-pl.adoc'
+    }
+
+    resources {
+        from('ptrs') {
+            include 'resources/**/*.gif'
+            include 'resources/**/*.jpg'
+            include 'resources/**/*.pdf'
+            include 'resources/**/*.png'
+            include 'resources/**/*.xlsx'
+            include 'resources/**/*.xml'
+        }
+    }
+
+    pdfThemes {
+        local 'example-pl', {
+            themeDir = file("$srcDir/example-pl-theme")
+            themeName = 'example-pl'
+        }
+    }
+}
+
+def getGitHash() {
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    stdout.toString().trim()
+}
+
+static def getDate() {
+    new Date().format('yyyy-MM-dd HH:mm')
+}
